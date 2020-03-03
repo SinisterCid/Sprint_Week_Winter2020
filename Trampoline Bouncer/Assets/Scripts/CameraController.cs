@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    [Header("Level Settings")]
+    [Header("Camera Level Settings")]
     public GameObject playerTarget;
     public float levelTopLimit;
     public float levelBottomLimit;
 
-    [Header("Camera Settings")]
+    [Header("Camera Player Settings")]
     public float fromPlayerTopLimit;
     public float fromPlayerBottomLimit;
 
