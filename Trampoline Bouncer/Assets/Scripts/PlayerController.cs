@@ -21,14 +21,20 @@ public class PlayerController : MonoBehaviour
     public float acceleration;
     public float deceleration;
 
+    bool gravityOn;
+
+    float lastBounceTime;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        lastBounceTime = Time.time;
     }
 
     private void Start()
     {
         rb.velocity = new Vector2(0, baseBounceVelocity);
+        gravityOn = true;
     }
 
     // Update is called once per frame
@@ -36,7 +42,8 @@ public class PlayerController : MonoBehaviour
     {
         MaxSpeedVariation();
         PlayerMovement();
-        Gravity();
+        if (gravityOn)
+            Gravity();
     }
 
     void PlayerMovement()
@@ -57,12 +64,11 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x - deceleration * Time.deltaTime, 0, maxSpeed), rb.velocity.y);
         }
-                
     }
 
     void MaxSpeedVariation()
     {
-        maxSpeed = minimumMaxSpeed + Mathf.Abs(rb.velocity.y) / terminalVelocity * (maximumMaxSpeed - minimumMaxSpeed);
+        maxSpeed = minimumMaxSpeed + Mathf.Clamp(Mathf.Abs(rb.velocity.y), 0, terminalVelocity) / terminalVelocity * (maximumMaxSpeed - minimumMaxSpeed);
     }
 
     void Gravity()
@@ -72,6 +78,7 @@ public class PlayerController : MonoBehaviour
 
     void Bounce()
     {
+        
         rb.velocity = new Vector2(rb.velocity.x, baseBounceVelocity + extraBounceForce);
         baseBounceVelocity = baseBounceVelocity + extraBounceForce;
     }
@@ -81,6 +88,8 @@ public class PlayerController : MonoBehaviour
         if(other.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
             Bounce();
+            Debug.Log(Time.time - lastBounceTime);
+            lastBounceTime = Time.time;
         }
     }
 }
