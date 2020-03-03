@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
 
     [Header("Horizontal Movement")]
     public float maxSpeed;
+    public float minimumMaxSpeed;
+    public float maximumMaxSpeed;
     public float acceleration;
     public float deceleration;
 
@@ -32,6 +34,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        MaxSpeedVariation();
         PlayerMovement();
         Gravity();
     }
@@ -55,6 +58,11 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x - deceleration * Time.deltaTime, 0, maxSpeed), rb.velocity.y);
         }
                 
+    }
+
+    void MaxSpeedVariation()
+    {
+        maxSpeed = minimumMaxSpeed + Mathf.Abs(rb.velocity.y) / terminalVelocity * (maximumMaxSpeed - minimumMaxSpeed);
     }
 
     void Gravity()
