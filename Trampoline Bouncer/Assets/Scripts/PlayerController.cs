@@ -6,12 +6,15 @@ public class PlayerController : MonoBehaviour
 {
     Rigidbody2D rb;
 
+    [Header("Bounce Settings")]
     public float extraBounceForce;
     public float baseBounceVelocity;
 
+    [Header("Vertical Movement")]
     public float gravity;
     public float terminalVelocity;
 
+    [Header("Horizontal Movement")]
     public float maxSpeed;
     public float acceleration;
     public float deceleration;

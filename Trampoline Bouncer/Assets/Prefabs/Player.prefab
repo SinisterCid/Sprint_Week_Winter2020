@@ -95,13 +95,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d453194550551c84d877ae2620f16de9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bounceModifier: 0
-  baseBounceVelocity: 0
+  extraBounceForce: 0.8
+  baseBounceVelocity: 4
   gravity: 12
-  terminalVelocity: 6
-  maxSpeed: 5
-  acceleration: 10
-  deceleration: 15
+  terminalVelocity: 28
+  maxSpeed: 12
+  acceleration: 75
+  deceleration: 75
 --- !u!50 &8565978815179083719
 Rigidbody2D:
   serializedVersion: 4
