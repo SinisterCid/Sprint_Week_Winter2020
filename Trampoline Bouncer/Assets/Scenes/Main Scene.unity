@@ -162,12 +162,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2eb989ee1029bc546a925dfc6009c44d, type: 3}
+  m_Script: {fileID: 11500000, guid: fd6f7aae2ae061c4ea3726d3d3ac3709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObj: {fileID: 61133424}
-  velocityRange: 10
-  cameraDistanceRange: 3
+  playerTarget: {fileID: 61133424}
+  levelTopLimit: 100
+  levelBottomLimit: 3.69
+  fromPlayerTopLimit: 5
+  fromPlayerBottomLimit: -5
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -455,7 +457,7 @@ MonoBehaviour:
   health: 3
   destroyTime: 0
   momentumLoss: 3
-  bounceBackLoss: 0
+  bounceBackLossMultiplier: 0.8
 --- !u!1001 &8565978815979578111
 PrefabInstance:
   m_ObjectHideFlags: 0
