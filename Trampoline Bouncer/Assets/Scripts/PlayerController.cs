@@ -6,12 +6,15 @@ public class PlayerController : MonoBehaviour
 {
     Rigidbody2D rb;
 
+    [Header("Bounce")]
     public float extraBounceForce;
     public float baseBounceVelocity;
 
+    [Header("Vertical Movement")]
     public float gravity;
     public float terminalVelocity;
 
+    [Header("Horizontal Movement")]
     public float maxSpeed;
     public float minimumMaxSpeed;
     public float maximumMaxSpeed;
@@ -20,18 +23,20 @@ public class PlayerController : MonoBehaviour
 
     bool gravityOn;
 
-    float lastBounceTime;
+    GameObject gameManager;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        lastBounceTime = Time.time;
+        gameManager = GameObject.Find("Game Manager");
     }
 
     private void Start()
     {
         rb.velocity = new Vector2(0, baseBounceVelocity);
         gravityOn = true;
+        gameManager.GetComponent<GameManager>().player = gameObject;
+        gameManager.GetComponent<GameManager>().startBounceVelocity = baseBounceVelocity;
     }
 
     // Update is called once per frame
@@ -85,8 +90,6 @@ public class PlayerController : MonoBehaviour
         if(other.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
             Bounce();
-            Debug.Log(Time.time - lastBounceTime);
-            lastBounceTime = Time.time;
         }
     }
 }

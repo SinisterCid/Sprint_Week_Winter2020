@@ -9,16 +9,18 @@ public class Breakable : MonoBehaviour
     public float momentumLoss;
     public float bounceBackLossMultiplier;
 
+    GameObject gameManagerObj;
     GameObject playerObj;
     Rigidbody2D playerRB;
     float velocityBeforePhysicsUpdate;
 
-    private void Start()
+    private void Awake()
     {
+        gameManagerObj = GameObject.Find("Game Manager");
+        gameManagerObj.GetComponent<GameManager>().breakableObjects.Add(gameObject);
         playerObj = GameObject.Find("Player");
         playerRB = playerObj.GetComponent<Rigidbody2D>();
     }
-
 
     private void FixedUpdate()
     {
@@ -30,7 +32,6 @@ public class Breakable : MonoBehaviour
     {
         if(other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            Debug.Log(velocityBeforePhysicsUpdate);
             health--;
             PlayerController playerScript = other.gameObject.GetComponent<PlayerController>();
             playerScript.baseBounceVelocity = playerScript.baseBounceVelocity - momentumLoss;
@@ -38,7 +39,7 @@ public class Breakable : MonoBehaviour
                 playerRB.velocity = new Vector3(playerRB.velocity.x, -velocityBeforePhysicsUpdate * bounceBackLossMultiplier);
 
             if (health <= 0)
-                Destroy(gameObject, destroyTime);
+                gameObject.SetActive(false);
         }
     }
 }

@@ -100,6 +100,8 @@ MonoBehaviour:
   gravity: 12
   terminalVelocity: 28
   maxSpeed: 12
+  minimumMaxSpeed: 6
+  maximumMaxSpeed: 18
   acceleration: 75
   deceleration: 75
 --- !u!50 &8565978815179083719

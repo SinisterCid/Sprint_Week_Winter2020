@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6075986635392008488}
   - component: {fileID: 1915158440749156748}
   - component: {fileID: 9125579932255707193}
+  - component: {fileID: 4089636281384171297}
   m_Layer: 0
   m_Name: Hazard 2
   m_TagString: Untagged
@@ -97,3 +98,15 @@ CircleCollider2D:
   m_Offset: {x: -0.17809153, y: 0.3205657}
   serializedVersion: 2
   m_Radius: 3.5779464
+--- !u!114 &4089636281384171297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4386515851723477624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a347b6bbe6ddde4f8ed5dcd519d73d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
