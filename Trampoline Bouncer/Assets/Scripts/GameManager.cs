@@ -6,10 +6,14 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public int maxLives;
+
+    [Space]
+    [Header("Don't touch past here")]
     int numberOfLives;
     float score = 0;
     float highScore;
     public List<GameObject> breakableObjects = new List<GameObject>();
+    public List<GameObject> collectables = new List<GameObject>();
     public GameObject player;
     public Transform playerStartPosition;
     public float startBounceVelocity;
@@ -42,7 +46,7 @@ public class GameManager : MonoBehaviour
             
     }
 
-    void IncreaseScore(int scoreIncrease)
+    public void IncreaseScore(int scoreIncrease)
     {
         score += scoreIncrease;
     }
@@ -59,11 +63,17 @@ public class GameManager : MonoBehaviour
         if (numberOfLives <= 0)
             LostAllLives();
         else
+
         foreach(GameObject breakable in breakableObjects)
         {
             breakable.SetActive(true);
             breakable.GetComponent<Breakable>().health = 3;
         }
+        foreach(GameObject coin in collectables)
+        {
+            coin.SetActive(true);
+        }
+
         player.transform.position = playerStartPosition.position;
         player.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         player.GetComponent<PlayerController>().baseBounceVelocity = startBounceVelocity;
@@ -84,6 +94,8 @@ public class GameManager : MonoBehaviour
 
     void LostAllLives()
     {
-        //Application.Quit();
+        collectables.Clear();
+        breakableObjects.Clear();
+        Application.Quit();
     }
 }

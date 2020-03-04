@@ -34,7 +34,7 @@ public class Breakable : MonoBehaviour
         {
             health--;
             PlayerController playerScript = other.gameObject.GetComponent<PlayerController>();
-            playerScript.baseBounceVelocity = playerScript.baseBounceVelocity - momentumLoss;
+            playerScript.baseBounceVelocity = Mathf.Clamp(playerScript.baseBounceVelocity - momentumLoss, 0.5f, Mathf.Infinity);
             if (velocityBeforePhysicsUpdate < 0)
                 playerRB.velocity = new Vector3(playerRB.velocity.x, -velocityBeforePhysicsUpdate * bounceBackLossMultiplier);
 
