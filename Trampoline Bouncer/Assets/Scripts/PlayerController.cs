@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     Rigidbody2D rb;
+    PlayerAnimations anims;
 
     [Header("Bounce")]
     public float extraBounceForce;
@@ -37,6 +38,8 @@ public class PlayerController : MonoBehaviour
         gravityOn = true;
         gameManager.GetComponent<GameManager>().player = gameObject;
         gameManager.GetComponent<GameManager>().startBounceVelocity = baseBounceVelocity;
+        anims = gameObject.GetComponent<PlayerAnimations>();
+
     }
 
     // Update is called once per frame
@@ -50,7 +53,7 @@ public class PlayerController : MonoBehaviour
 
     void PlayerMovement()
     {
-        if (Input.GetAxisRaw("Horizontal") == -1 )
+        if (Input.GetAxisRaw("Horizontal") == -1)
         {
             rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x - acceleration * Time.deltaTime, -maxSpeed, maxSpeed), rb.velocity.y);
         }
@@ -80,16 +83,27 @@ public class PlayerController : MonoBehaviour
 
     void Bounce()
     {
-        
+
         rb.velocity = new Vector2(rb.velocity.x, baseBounceVelocity + extraBounceForce);
         baseBounceVelocity = baseBounceVelocity + extraBounceForce;
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
             Bounce();
+            if (transform.eulerAngles.z >= 90 || transform.eulerAngles.z <= -90)
+            {
+                Debug.Log("on side");
+                anims.GroundBounceSide();
+            }
+            else if (transform.eulerAngles.z <= 90 || transform.eulerAngles.z >= -90) {
+                {
+                    Debug.Log("on top/bottom");
+                    anims.GroundBounceUpDown();
+                }
+            }
         }
     }
 }
