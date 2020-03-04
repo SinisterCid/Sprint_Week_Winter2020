@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     Rigidbody2D rb;
     PlayerAnimations anims;
+    public ParticleSystem sparks;
 
     [Header("Bounce")]
     public float extraBounceForce;
@@ -83,7 +84,7 @@ public class PlayerController : MonoBehaviour
 
     void Bounce()
     {
-
+        CreateSparks();
         rb.velocity = new Vector2(rb.velocity.x, baseBounceVelocity + extraBounceForce);
         baseBounceVelocity = baseBounceVelocity + extraBounceForce;
     }
@@ -92,7 +93,9 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
+            
             Bounce();
+            
             if (transform.eulerAngles.z >= 90 || transform.eulerAngles.z <= -90)
             {
                 Debug.Log("on side");
@@ -105,5 +108,10 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+    }
+
+
+    void CreateSparks() {
+        sparks.Play();
     }
 }

@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Collectable : MonoBehaviour
 {
     GameObject gameManager;
     GameManager gameManagerScript;
+    Text ScoreText;
+    
+   
 
     public int coinPoints;
 
@@ -13,6 +17,7 @@ public class Collectable : MonoBehaviour
     {
         gameManager = GameObject.Find("Game Manager");
         gameManagerScript = gameManager.GetComponent<GameManager>();
+        ScoreText = GetComponent<Text>();
     }
 
 
