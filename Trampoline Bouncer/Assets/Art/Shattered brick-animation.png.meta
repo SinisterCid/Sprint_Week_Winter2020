@@ -1,37 +1,25 @@
 fileFormatVersion: 2
-guid: 9745cc16acc63a04fb19d0f1b799d677
+guid: 1e175098eda542b46bc107f61ff7be40
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -16793423984005362
-    second: gems_0
+      213: -7214427683459315913
+    second: Shattered brick-animation_0
   - first:
-      213: -4672790576089934573
-    second: gems_1
+      213: 9105405309249682756
+    second: Shattered brick-animation_1
   - first:
-      213: 3598714856469743548
-    second: gems_2
+      213: -8578766371907811048
+    second: Shattered brick-animation_2
   - first:
-      213: -2511356291957038328
-    second: gems_3
+      213: -6149476288437091299
+    second: Shattered brick-animation_3
   - first:
-      213: -7335531085601356040
-    second: gems_4
+      213: 6648329290732231538
+    second: Shattered brick-animation_4
   - first:
-      213: 8486993253046354261
-    second: gems_5
-  - first:
-      213: 5840603745321418647
-    second: gems_6
-  - first:
-      213: -7995427946482172144
-    second: gems_7
-  - first:
-      213: 5817121085498563684
-    second: gems_8
-  - first:
-      213: 7063906336278421090
-    second: gems_9
+      213: -6057090980444148841
+    second: Shattered brick-animation_5
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -61,7 +49,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: -1
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -93,7 +81,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -105,7 +93,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -117,7 +105,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -129,7 +117,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -141,7 +129,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -152,13 +140,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: gems_0
+      name: Shattered brick-animation_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 422.2
-        height: 509
+        y: 4239.333
+        width: 2915
+        height: 2119.6667
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +154,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 85548c0345f64da4284d9b440d3cbc1b
-      internalID: -16793423984005362
+      spriteID: 7729e64ac5caf634f9063301be2ef0b1
+      internalID: -7214427683459315913
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gems_1
+      name: Shattered brick-animation_1
       rect:
         serializedVersion: 2
-        x: 422
-        y: 0
-        width: 422.2
-        height: 509
+        x: 2915
+        y: 4239.333
+        width: 2915
+        height: 2119.6667
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,20 +175,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 40423453358701248a6de43b40a5ffca
-      internalID: -4672790576089934573
+      spriteID: aa48ebbc4585f9540bc0d0796b566019
+      internalID: 9105405309249682756
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gems_2
+      name: Shattered brick-animation_2
       rect:
         serializedVersion: 2
-        x: 844
-        y: 0
-        width: 422.2
-        height: 509
+        x: 0
+        y: 2120.3333
+        width: 2915
+        height: 2119.6667
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,20 +196,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b905211672eafa64ebc4bbce1edcef25
-      internalID: 3598714856469743548
+      spriteID: 006695a919ac2e343869a85b4885f2d9
+      internalID: -8578766371907811048
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gems_3
+      name: Shattered brick-animation_3
       rect:
         serializedVersion: 2
-        x: 1266
-        y: 0
-        width: 422.2
-        height: 509
+        x: 2915
+        y: 2120.3333
+        width: 2915
+        height: 2119.6667
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,20 +217,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7a9c6e9e2b201c04683b0c39ca9ce8b5
-      internalID: -2511356291957038328
+      spriteID: f09b964aa68524e44a564f9bd057f0d7
+      internalID: -6149476288437091299
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gems_4
+      name: Shattered brick-animation_4
       rect:
         serializedVersion: 2
-        x: 1688
-        y: 0
-        width: 422.2
-        height: 509
+        x: 0
+        y: 1.333252
+        width: 2915
+        height: 2119.6667
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,20 +238,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ebfffaebeecc6624ba1aac41feb4ffb0
-      internalID: -7335531085601356040
+      spriteID: 7aa93f0109e216c4e897411ed56a7c71
+      internalID: 6648329290732231538
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gems_5
+      name: Shattered brick-animation_5
       rect:
         serializedVersion: 2
-        x: 2110
-        y: 0
-        width: 422.2
-        height: 509
+        x: 2915
+        y: 1.333252
+        width: 2915
+        height: 2119.6667
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -271,92 +259,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf8fb24b603f54745b5e0b32a439ffc7
-      internalID: 8486993253046354261
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gems_6
-      rect:
-        serializedVersion: 2
-        x: 2532
-        y: 0
-        width: 422.2
-        height: 509
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 27cfc014d1eaf9945bcc3a9dfb51e788
-      internalID: 5840603745321418647
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gems_7
-      rect:
-        serializedVersion: 2
-        x: 2954
-        y: 0
-        width: 422.2
-        height: 509
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 334a9a0bf5b6d6340bf9cb9ef322fb46
-      internalID: -7995427946482172144
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gems_8
-      rect:
-        serializedVersion: 2
-        x: 3376
-        y: 0
-        width: 422.2
-        height: 509
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d9b0826ce4c3b8e40bee64d2e6670d80
-      internalID: 5817121085498563684
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gems_9
-      rect:
-        serializedVersion: 2
-        x: 3798
-        y: 0
-        width: 422.2
-        height: 509
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e0e9daef7d081d64d91b5c26a9cef8f3
-      internalID: 7063906336278421090
+      spriteID: f0461bf246216c64fb418a79184301b8
+      internalID: -6057090980444148841
       vertices: []
       indices: 
       edges: []

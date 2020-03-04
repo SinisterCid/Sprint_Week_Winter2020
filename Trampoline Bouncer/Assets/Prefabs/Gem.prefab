@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2828654296560885389}
   - component: {fileID: 4549070397375859977}
   - component: {fileID: 7838752719092170153}
+  - component: {fileID: 4221158727982458624}
   m_Layer: 0
   m_Name: Gem
   m_TagString: Untagged
@@ -111,3 +112,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinPoints: 20
+--- !u!95 &4221158727982458624
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8887355276809399385}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

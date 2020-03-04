@@ -13,6 +13,8 @@ public class Breakable : MonoBehaviour
     GameObject playerObj;
     Rigidbody2D playerRB;
     float velocityBeforePhysicsUpdate;
+    Animator anim;
+
 
     private void Awake()
     {
@@ -20,6 +22,7 @@ public class Breakable : MonoBehaviour
         gameManagerObj.GetComponent<GameManager>().breakableObjects.Add(gameObject);
         playerObj = GameObject.Find("Player");
         playerRB = playerObj.GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     private void FixedUpdate()
@@ -38,8 +41,15 @@ public class Breakable : MonoBehaviour
             if (velocityBeforePhysicsUpdate < 0)
                 playerRB.velocity = new Vector3(playerRB.velocity.x, -velocityBeforePhysicsUpdate * bounceBackLossMultiplier);
 
+            if (health == 1) {
+                anim.SetBool("WasHit", true);
+                anim.SetFloat("Break", 2);
+                Debug.Log("Animation was changed");
+            }
+
             if (health <= 0)
-                gameObject.SetActive(false);
+                //anim.SetFloat("Break", 0);
+            gameObject.SetActive(false);
         }
     }
 }
