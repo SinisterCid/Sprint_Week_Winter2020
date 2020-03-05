@@ -6,7 +6,11 @@ public class PlayerController : MonoBehaviour
 {
     Rigidbody2D rb;
     PlayerAnimations anims;
-    public ParticleSystem sparks;
+    public ParticleSystem trampolineSparks;
+    public ParticleSystem wallSparks;
+    public ParticleSystem platformSparks;
+    public ParticleSystem breakableSparks;
+    public ParticleSystem hazardSparks;
 
     [Header("Bounce")]
     public float extraBounceForce;
@@ -84,7 +88,7 @@ public class PlayerController : MonoBehaviour
 
     void Bounce()
     {
-        CreateSparks();
+        TrampsSparks();
         rb.velocity = new Vector2(rb.velocity.x, baseBounceVelocity + extraBounceForce);
         baseBounceVelocity = baseBounceVelocity + extraBounceForce;
     }
@@ -93,23 +97,65 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
-            
             Bounce();
-            
             if (transform.eulerAngles.z >= 90 || transform.eulerAngles.z <= -90)
             {
                 anims.GroundBounceSide();
             }
-            else if (transform.eulerAngles.z <= 90 || transform.eulerAngles.z >= -90) {
+            else if (transform.eulerAngles.z <= 90 || transform.eulerAngles.z >= -90)
+            {
                 {
                     anims.GroundBounceUpDown();
                 }
             }
         }
+
+        else if (other.gameObject.layer == LayerMask.NameToLayer("Wall"))
+        {
+            WallSparks();
+        }
+        else if (other.gameObject.layer == LayerMask.NameToLayer("Platform"))
+        {
+            PlatformSparks();
+        }
+        else if (other.gameObject.layer == LayerMask.NameToLayer("Breakable"))
+        {
+            BreakableSparks();
+        }
+        else if (other.gameObject.layer == LayerMask.NameToLayer("Hazard"))
+        {
+            HazardSparks();
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("FinishLine"))
+        {
+            trampolineSparks.Play();
+            wallSparks.Play();
+            breakableSparks.Play();
+        }
     }
 
 
-    void CreateSparks() {
-        sparks.Play();
+    void TrampsSparks()
+    {
+        trampolineSparks.Play();
+    }
+    void WallSparks()
+    {
+        wallSparks.Play();
+    }
+    void PlatformSparks()
+    {
+        platformSparks.Play();
+    }
+    void BreakableSparks()
+    {
+        breakableSparks.Play();
+    }
+    void HazardSparks()
+    {
+        hazardSparks.Play();
     }
 }

@@ -15,11 +15,11 @@ TagManager:
   - 
   - Player
   - Ground
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Wall
+  - Platform
+  - Breakable
+  - Hazard
+  - FinishLine
   - 
   - 
   - 
