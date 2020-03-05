@@ -51,21 +51,27 @@ public class Breakable : MonoBehaviour
             if (velocityBeforePhysicsUpdate < 0)
                 playerRB.velocity = new Vector3(playerRB.velocity.x, -velocityBeforePhysicsUpdate * bounceBackLossMultiplier);
 
+            if(health > 0)
+            {
+                collisionSound.clip = collisionClip;
+                collisionSound.Stop();
+                collisionSound.PlayOneShot(collisionClip);
+            }
+
             if (health == 1)
             {
-                collisionSound.Stop();
-                collisionSound.clip = collisionClip;
-                collisionSound.Play();
-                if (health == 1)
-                {
-                    anim.SetBool("WasHit", true);
-                    anim.SetFloat("Break", 2);
-                    Debug.Log("Animation was changed");
-                }
-
-                if (health <= 0)
-                    gameObject.SetActive(false);
+                anim.SetBool("WasHit", true);
+                anim.SetFloat("Break", 2);
+                Debug.Log("Animation was changed");
             }
+            else if (health <= 0)
+            {
+                collisionSound.clip = shatterClip;
+                collisionSound.Stop();
+                collisionSound.PlayOneShot(shatterClip);
+                gameObject.SetActive(false);
+            }
+
         }
     }
 }

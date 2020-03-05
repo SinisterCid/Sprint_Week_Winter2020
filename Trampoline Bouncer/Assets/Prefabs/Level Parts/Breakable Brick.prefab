@@ -100,6 +100,8 @@ MonoBehaviour:
   destroyTime: 0
   momentumLoss: 4
   bounceBackLossMultiplier: 0.5
+  collisionClip: {fileID: 8300000, guid: d63ac7a4600272640a2fc68f84d82b08, type: 3}
+  shatterClip: {fileID: 8300000, guid: b9b32cfa7c4466a44b4a43574d007523, type: 3}
 --- !u!61 &2918721422003161116
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -163,7 +165,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 256
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
