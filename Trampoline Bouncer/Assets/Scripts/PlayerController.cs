@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     public AudioClip deathClip;
     public AudioClip hardCollisionClip;
     public AudioClip bounceClip;
+    public AudioClip victoryClip;
 
     AudioSource playerAudio;
 
@@ -184,5 +185,6 @@ public class PlayerController : MonoBehaviour
     void FinishLineSparks()
     {
         finishLineSparks.Play();
+        playerAudio.PlayOneShot(victoryClip);
     }
 }

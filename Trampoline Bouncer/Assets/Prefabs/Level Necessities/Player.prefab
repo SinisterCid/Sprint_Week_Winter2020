@@ -28664,6 +28664,7 @@ MonoBehaviour:
   deathClip: {fileID: 8300000, guid: edc8644ca1804424cbd7f0ff479d4789, type: 3}
   hardCollisionClip: {fileID: 8300000, guid: d63ac7a4600272640a2fc68f84d82b08, type: 3}
   bounceClip: {fileID: 8300000, guid: 8964efbf4b8134b4dbb521b0f7b4d723, type: 3}
+  victoryClip: {fileID: 8300000, guid: 2b0540d18448eb24da2e34d93b3f7ad4, type: 3}
   extraBounceForce: 4
   baseBounceVelocity: 10
   gravity: 12

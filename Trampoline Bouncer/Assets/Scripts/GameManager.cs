@@ -24,11 +24,14 @@ public class GameManager : MonoBehaviour
 
     public float highestPlayerHeight;
 
+    AudioSource musicPlayer;
+
 
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
         numberOfLives = maxLives;
+        musicPlayer = GetComponent<AudioSource>();
 
     }
 
@@ -118,9 +121,11 @@ public class GameManager : MonoBehaviour
 
     public void CrossFinishLine()
     {
+        musicPlayer.Stop();
         player.GetComponent<PlayerController>().enabled = false;
         collectables.Clear();
         breakableObjects.Clear();
+
         if (SceneManager.sceneCountInBuildSettings > SceneManager.GetActiveScene().buildIndex + 1)
             StartCoroutine(ChangeScreens(SceneManager.GetActiveScene().buildIndex + 1));
         else
@@ -133,6 +138,7 @@ public class GameManager : MonoBehaviour
     IEnumerator ChangeScreens(int scene)
     {
         yield return new WaitForSeconds(waitTimeInSeconds);
+        musicPlayer.Play();
         SceneManager.LoadScene(scene);
     }
 
