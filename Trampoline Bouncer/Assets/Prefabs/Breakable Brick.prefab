@@ -97,7 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 2
   destroyTime: 0
-  momentumLoss: 3
+  momentumLoss: 1.5
   bounceBackLossMultiplier: 0.8
 --- !u!61 &2918721422003161116
 BoxCollider2D:

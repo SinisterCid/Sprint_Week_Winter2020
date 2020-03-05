@@ -14,11 +14,9 @@ public class PlayerAnimations : MonoBehaviour
     public void GroundBounceUpDown()
     {
         anim.SetTrigger("Ground_BounceUpDown");
-        Debug.Log("up down played");
     }
     public void GroundBounceSide()
     {
         anim.SetTrigger("Ground_BounceSide");
-        Debug.Log("left right played");
     }
 }

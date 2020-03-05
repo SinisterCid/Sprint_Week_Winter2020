@@ -17,6 +17,7 @@ public class Collectable : MonoBehaviour
     {
         gameManager = GameObject.Find("Game Manager");
         gameManagerScript = gameManager.GetComponent<GameManager>();
+        gameManagerScript.collectables.Add(gameObject);
         ScoreText = GetComponent<Text>();
     }
 

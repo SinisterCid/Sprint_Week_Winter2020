@@ -95,7 +95,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d453194550551c84d877ae2620f16de9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  extraBounceForce: 0.8
+  sparks: {fileID: 0}
+  extraBounceForce: 4
   baseBounceVelocity: 4
   gravity: 12
   terminalVelocity: 28
