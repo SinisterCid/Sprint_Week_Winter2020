@@ -9,23 +9,26 @@ public class GameManager : MonoBehaviour
 
     [Space]
     [Header("Don't touch past here")]
-    int numberOfLives;
-    float score = 0;
+    public int numberOfLives;
+    public float score = 0;
     float highScore;
+    public UIManager currentUIManager;
+
     public List<GameObject> breakableObjects = new List<GameObject>();
     public List<GameObject> collectables = new List<GameObject>();
+
     public GameObject player;
     public Transform playerStartPosition;
     public float startBounceVelocity;
 
     public float highestPlayerHeight;
 
-    
 
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
         numberOfLives = maxLives;
+        
     }
 
     private void Update()
@@ -33,6 +36,7 @@ public class GameManager : MonoBehaviour
         CalculateHighScore();
         if (player != null)
             CalculateHighestPlayerHeight();
+        
     }
 
 
@@ -49,6 +53,7 @@ public class GameManager : MonoBehaviour
     public void IncreaseScore(int scoreIncrease)
     {
         score += scoreIncrease;
+        currentUIManager.UpdateScoreText(Mathf.RoundToInt(score));
     }
 
     void CalculateHighScore()
@@ -60,16 +65,27 @@ public class GameManager : MonoBehaviour
     public void LoseALife()
     {
         numberOfLives--;
+        currentUIManager.UpdateLivesText(numberOfLives);
+        player.SetActive(false);
         if (numberOfLives <= 0)
             LostAllLives();
         else
+        {
+            StartCoroutine(ResetLevel());
+        }
+    }
 
-        foreach(GameObject breakable in breakableObjects)
+    IEnumerator ResetLevel()
+    {
+        yield return new WaitForSeconds(3);
+
+        player.SetActive(true);
+        foreach (GameObject breakable in breakableObjects)
         {
             breakable.SetActive(true);
             breakable.GetComponent<Breakable>().health = 3;
         }
-        foreach(GameObject coin in collectables)
+        foreach (GameObject coin in collectables)
         {
             coin.SetActive(true);
         }
@@ -79,12 +95,42 @@ public class GameManager : MonoBehaviour
         player.GetComponent<PlayerController>().baseBounceVelocity = startBounceVelocity;
         highestPlayerHeight = playerStartPosition.position.y;
         score = 0;
+        currentUIManager.UpdateScoreText(Mathf.RoundToInt(score));
+    }
+
+    void LostAllLives()
+    {
+        
+        collectables.Clear();
+        breakableObjects.Clear();
+        StartCoroutine(ChangeScreens(0));
+        numberOfLives = maxLives;
+    }
+
+    public void CrossFinishLine()
+    {
+        player.SetActive(false);
+        collectables.Clear();
+        breakableObjects.Clear();
+        if (SceneManager.GetActiveScene().buildIndex + 1 != -1)
+            StartCoroutine(ChangeScreens(SceneManager.GetActiveScene().buildIndex + 1));
+        else
+        {
+            StartCoroutine(ChangeScreens(0));
+        }
+
+    }
+
+    IEnumerator ChangeScreens(int scene)
+    {
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene(scene);
     }
 
     //Set up with UI
     public void StartButton()
     {
-
+        SceneManager.LoadScene(1);
     }
 
     public void Options()
@@ -92,10 +138,10 @@ public class GameManager : MonoBehaviour
 
     }
 
-    void LostAllLives()
+    public void ExitGame()
     {
-        collectables.Clear();
-        breakableObjects.Clear();
         Application.Quit();
     }
+
+    
 }

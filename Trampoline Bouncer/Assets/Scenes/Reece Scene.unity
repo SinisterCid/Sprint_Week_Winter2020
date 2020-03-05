@@ -359,11 +359,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8565978815179083718, guid: 135dc766fa478904da84ae788e65db2b,
-        type: 3}
-      propertyPath: extraBounceForce
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 135dc766fa478904da84ae788e65db2b, type: 3}
 --- !u!1001 &1315469345

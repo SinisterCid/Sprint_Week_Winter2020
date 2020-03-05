@@ -98,12 +98,10 @@ public class PlayerController : MonoBehaviour
             
             if (transform.eulerAngles.z >= 90 || transform.eulerAngles.z <= -90)
             {
-                Debug.Log("on side");
                 anims.GroundBounceSide();
             }
             else if (transform.eulerAngles.z <= 90 || transform.eulerAngles.z >= -90) {
                 {
-                    Debug.Log("on top/bottom");
                     anims.GroundBounceUpDown();
                 }
             }
