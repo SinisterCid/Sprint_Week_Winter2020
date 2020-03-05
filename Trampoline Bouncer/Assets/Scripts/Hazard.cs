@@ -6,11 +6,13 @@ public class Hazard : MonoBehaviour
 {
     GameObject gameManager;
     GameManager gameManagerScript;
+    AudioSource deathSound;
 
     private void Start()
     {
         gameManager = GameObject.Find("Game Manager");
         gameManagerScript = gameManager.GetComponent<GameManager>();
+        deathSound = GetComponent<AudioSource>();
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -18,6 +20,7 @@ public class Hazard : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             gameManagerScript.LoseALife();
+            deathSound.Play();
         }
     }
 }

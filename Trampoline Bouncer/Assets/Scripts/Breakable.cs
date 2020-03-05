@@ -15,6 +15,9 @@ public class Breakable : MonoBehaviour
     float velocityBeforePhysicsUpdate;
     Animator anim;
 
+    AudioSource collisionSound;
+    public AudioClip collisionClip;
+    public AudioClip shatterClip;
 
     private void Awake()
     {
@@ -23,6 +26,7 @@ public class Breakable : MonoBehaviour
         playerObj = GameObject.Find("Player");
         playerRB = playerObj.GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        collisionSound = GetComponent<AudioSource>();
     }
 
     private void FixedUpdate()
@@ -35,6 +39,7 @@ public class Breakable : MonoBehaviour
     {
         if(other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
+            
             health--;
             PlayerController playerScript = other.gameObject.GetComponent<PlayerController>();
             playerScript.baseBounceVelocity = Mathf.Clamp(playerScript.baseBounceVelocity - momentumLoss, 0.5f, Mathf.Infinity);
@@ -42,6 +47,9 @@ public class Breakable : MonoBehaviour
                 playerRB.velocity = new Vector3(playerRB.velocity.x, -velocityBeforePhysicsUpdate * bounceBackLossMultiplier);
 
             if (health == 1) {
+                collisionSound.Stop();
+                collisionSound.clip = collisionClip;
+                collisionSound.Play();
                 anim.SetBool("WasHit", true);
                 anim.SetFloat("Break", 2);
                 Debug.Log("Animation was changed");
