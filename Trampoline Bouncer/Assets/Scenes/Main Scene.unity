@@ -1297,8 +1297,8 @@ MonoBehaviour:
   playerTarget: {fileID: 61133424}
   levelTopLimit: 100
   levelBottomLimit: 3.69
-  fromPlayerTopLimit: 5
-  fromPlayerBottomLimit: -5
+  fromPlayerTopLimit: 2.5
+  fromPlayerBottomLimit: -2.5
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
