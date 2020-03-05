@@ -115,7 +115,6 @@ public class GameManager : MonoBehaviour
 
     public void CrossFinishLine()
     {
-        player.GetComponent<CircleCollider2D>().enabled = false;
         player.GetComponent<PlayerController>().enabled = false;
         collectables.Clear();
         breakableObjects.Clear();
