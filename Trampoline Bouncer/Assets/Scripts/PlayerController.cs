@@ -10,7 +10,9 @@ public class PlayerController : MonoBehaviour
     public ParticleSystem wallSparks;
     public ParticleSystem platformSparks;
     public ParticleSystem breakableSparks;
+    public ParticleSystem coinSparks;
     public ParticleSystem hazardSparks;
+    public ParticleSystem finishLineSparks;
 
     [Header("Bounce")]
     public float extraBounceForce;
@@ -26,6 +28,8 @@ public class PlayerController : MonoBehaviour
     public float maximumMaxSpeed;
     public float acceleration;
     public float deceleration;
+
+    public bool hasBounced = false;
 
     bool gravityOn;
 
@@ -91,6 +95,7 @@ public class PlayerController : MonoBehaviour
         TrampsSparks();
         rb.velocity = new Vector2(rb.velocity.x, baseBounceVelocity + extraBounceForce);
         baseBounceVelocity = baseBounceVelocity + extraBounceForce;
+        hasBounced = true;
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -131,9 +136,11 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("FinishLine"))
         {
-            trampolineSparks.Play();
-            wallSparks.Play();
-            breakableSparks.Play();
+            FinishLineSparks();
+        }
+        else if (other.gameObject.layer == LayerMask.NameToLayer("Coin"))
+        {
+            CoinSparks();
         }
     }
 
@@ -157,5 +164,13 @@ public class PlayerController : MonoBehaviour
     void HazardSparks()
     {
         hazardSparks.Play();
+    }
+    void CoinSparks()
+    {
+        coinSparks.Play();
+    }
+    void FinishLineSparks()
+    {
+        finishLineSparks.Play();
     }
 }
