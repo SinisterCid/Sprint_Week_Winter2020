@@ -18,7 +18,6 @@ public class Hazard : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             gameManagerScript.LoseALife();
-            Debug.Log("Happeninnnng");
         }
     }
 }

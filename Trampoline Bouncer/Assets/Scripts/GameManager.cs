@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public int maxLives;
+    public float waitTimeInSeconds;
 
     [Space]
     [Header("Don't touch past here")]
@@ -66,7 +67,10 @@ public class GameManager : MonoBehaviour
     {
         numberOfLives--;
         currentUIManager.UpdateLivesText(numberOfLives);
-        player.SetActive(false);
+        player.GetComponent<CircleCollider2D>().enabled = false;
+        player.GetComponent<SpriteRenderer>().enabled = false;
+        player.GetComponent<PlayerController>().enabled = false;
+
         if (numberOfLives <= 0)
             LostAllLives();
         else
@@ -77,9 +81,11 @@ public class GameManager : MonoBehaviour
 
     IEnumerator ResetLevel()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(waitTimeInSeconds);
 
-        player.SetActive(true);
+        player.GetComponent<CircleCollider2D>().enabled = true;
+        player.GetComponent<SpriteRenderer>().enabled = true;
+        player.GetComponent<PlayerController>().enabled = true;
         foreach (GameObject breakable in breakableObjects)
         {
             breakable.SetActive(true);
@@ -109,10 +115,11 @@ public class GameManager : MonoBehaviour
 
     public void CrossFinishLine()
     {
-        player.SetActive(false);
+        player.GetComponent<CircleCollider2D>().enabled = false;
+        player.GetComponent<PlayerController>().enabled = false;
         collectables.Clear();
         breakableObjects.Clear();
-        if (SceneManager.GetActiveScene().buildIndex + 1 != -1)
+        if (SceneManager.sceneCountInBuildSettings > SceneManager.GetActiveScene().buildIndex + 1)
             StartCoroutine(ChangeScreens(SceneManager.GetActiveScene().buildIndex + 1));
         else
         {
@@ -123,7 +130,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator ChangeScreens(int scene)
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(waitTimeInSeconds);
         SceneManager.LoadScene(scene);
     }
 
