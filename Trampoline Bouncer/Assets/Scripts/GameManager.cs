@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
         numberOfLives = maxLives;
-        
+
     }
 
     private void Update()
@@ -37,18 +37,18 @@ public class GameManager : MonoBehaviour
         CalculateHighScore();
         if (player != null)
             CalculateHighestPlayerHeight();
-        
+
     }
 
 
     void CalculateHighestPlayerHeight()
     {
-        if(highestPlayerHeight < player.transform.position.y)
+        if (highestPlayerHeight < player.transform.position.y)
         {
             IncreaseScore(Mathf.RoundToInt(player.transform.position.y - highestPlayerHeight));
             highestPlayerHeight = Mathf.RoundToInt(player.transform.position.y);
         }
-            
+
     }
 
     public void IncreaseScore(int scoreIncrease)
@@ -70,6 +70,7 @@ public class GameManager : MonoBehaviour
         player.GetComponent<CircleCollider2D>().enabled = false;
         player.GetComponent<SpriteRenderer>().enabled = false;
         player.GetComponent<PlayerController>().enabled = false;
+        player.GetComponent<TrailRenderer>().enabled = false;
 
         if (numberOfLives <= 0)
             LostAllLives();
@@ -86,6 +87,7 @@ public class GameManager : MonoBehaviour
         player.GetComponent<CircleCollider2D>().enabled = true;
         player.GetComponent<SpriteRenderer>().enabled = true;
         player.GetComponent<PlayerController>().enabled = true;
+        player.GetComponent<TrailRenderer>().enabled = true;
         foreach (GameObject breakable in breakableObjects)
         {
             breakable.SetActive(true);
@@ -106,7 +108,7 @@ public class GameManager : MonoBehaviour
 
     void LostAllLives()
     {
-        
+
         collectables.Clear();
         breakableObjects.Clear();
         StartCoroutine(ChangeScreens(0));
@@ -149,5 +151,5 @@ public class GameManager : MonoBehaviour
         Application.Quit();
     }
 
-    
+
 }
