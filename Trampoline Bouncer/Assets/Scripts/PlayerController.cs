@@ -14,6 +14,12 @@ public class PlayerController : MonoBehaviour
     public ParticleSystem hazardSparks;
     public ParticleSystem finishLineSparks;
 
+    public AudioClip deathClip;
+    public AudioClip hardCollisionClip;
+    public AudioClip bounceClip;
+
+    AudioSource playerAudio;
+
     [Header("Bounce")]
     public float extraBounceForce;
     public float baseBounceVelocity;
@@ -39,6 +45,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         gameManager = GameObject.Find("Game Manager");
+        playerAudio = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -148,14 +155,18 @@ public class PlayerController : MonoBehaviour
     void TrampsSparks()
     {
         trampolineSparks.Play();
+        playerAudio.PlayOneShot(bounceClip);
     }
     void WallSparks()
     {
         wallSparks.Play();
+
+        playerAudio.PlayOneShot(hardCollisionClip);
     }
     void PlatformSparks()
     {
         platformSparks.Play();
+        playerAudio.PlayOneShot(hardCollisionClip);
     }
     void BreakableSparks()
     {
@@ -164,6 +175,7 @@ public class PlayerController : MonoBehaviour
     void HazardSparks()
     {
         hazardSparks.Play();
+        playerAudio.PlayOneShot(deathClip);
     }
     void CoinSparks()
     {

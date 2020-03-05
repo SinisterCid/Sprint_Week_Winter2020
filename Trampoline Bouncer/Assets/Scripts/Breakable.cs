@@ -15,7 +15,6 @@ public class Breakable : MonoBehaviour
     float velocityBeforePhysicsUpdate;
     Animator anim;
 
-    AudioSource collisionSound;
     public AudioClip collisionClip;
     public AudioClip shatterClip;
 
@@ -26,7 +25,6 @@ public class Breakable : MonoBehaviour
         playerObj = GameObject.Find("Player");
         playerRB = playerObj.GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        collisionSound = GetComponent<AudioSource>();
     }
 
     private void FixedUpdate()
@@ -53,23 +51,19 @@ public class Breakable : MonoBehaviour
 
             if(health > 0)
             {
-                collisionSound.clip = collisionClip;
-                collisionSound.Stop();
-                collisionSound.PlayOneShot(collisionClip);
+                other.gameObject.GetComponent<AudioSource>().PlayOneShot(collisionClip);
             }
 
             if (health == 1)
             {
                 anim.SetBool("WasHit", true);
                 anim.SetFloat("Break", 2);
-                Debug.Log("Animation was changed");
             }
             else if (health <= 0)
             {
-                collisionSound.clip = shatterClip;
-                collisionSound.Stop();
-                collisionSound.PlayOneShot(shatterClip);
-                gameObject.SetActive(false);
+                other.gameObject.GetComponent<AudioSource>().PlayOneShot(shatterClip);
+                GetComponent<BoxCollider2D>().enabled = false;
+                GetComponent<SpriteRenderer>().enabled = false;
             }
 
         }

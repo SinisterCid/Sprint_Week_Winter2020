@@ -90,7 +90,8 @@ public class GameManager : MonoBehaviour
         player.GetComponent<TrailRenderer>().enabled = true;
         foreach (GameObject breakable in breakableObjects)
         {
-            breakable.SetActive(true);
+            breakable.GetComponent<BoxCollider2D>().enabled = true;
+            breakable.GetComponent<SpriteRenderer>().enabled = true;
             breakable.GetComponent<Breakable>().health = 3;
         }
         foreach (GameObject coin in collectables)
