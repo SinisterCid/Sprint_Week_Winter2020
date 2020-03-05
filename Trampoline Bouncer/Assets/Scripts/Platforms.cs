@@ -15,7 +15,6 @@ public class Platforms : MonoBehaviour
     private void Awake()
     {
         gameManagerObj = GameObject.Find("Game Manager");
-        gameManagerObj.GetComponent<GameManager>().breakableObjects.Add(gameObject);
         playerObj = GameObject.Find("Player");
         playerRB = playerObj.GetComponent<Rigidbody2D>();
     }
