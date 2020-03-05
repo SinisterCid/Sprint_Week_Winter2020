@@ -31,7 +31,12 @@ public class Platforms : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             PlayerController playerScript = other.gameObject.GetComponent<PlayerController>();
-            playerScript.baseBounceVelocity = Mathf.Clamp(playerScript.baseBounceVelocity - momentumLoss, 0.5f, Mathf.Infinity);
+            if (playerScript.hasBounced == true)
+            {
+                playerScript.baseBounceVelocity = Mathf.Clamp(playerScript.baseBounceVelocity - momentumLoss, 0.5f, Mathf.Infinity);
+                playerScript.hasBounced = false;
+            }
+
             if (velocityBeforePhysicsUpdate < 0)
                 playerRB.velocity = new Vector3(playerRB.velocity.x, -velocityBeforePhysicsUpdate * bounceBackLossMultiplier);
         }

@@ -120,5 +120,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95d4bb743f874234397f87182d70e53b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  momentumLoss: 8
-  bounceBackLossMultiplier: 1
+  momentumLoss: 4
+  bounceBackLossMultiplier: 0.5
