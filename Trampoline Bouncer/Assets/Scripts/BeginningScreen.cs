@@ -5,21 +5,40 @@ using UnityEngine;
 public class BeginningScreen : MonoBehaviour
 {
 
-    public Vector3 input;
-    public float force;
+    bool onStartButton = true;
+    public GameObject startArrow;
+    public GameObject exitArrow;
 
     // Update is called once per frame
     void Update()
     {
-        input = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        transform.Translate(-input *force * Time.deltaTime);
+        ButtonControls();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    void ButtonControls()
     {
-        if(Input.GetKeyDown("Left Ctrl"))
+        if (Input.GetAxisRaw("Vertical") == 1)
+            onStartButton = true;
+        else if (Input.GetAxisRaw("Vertical") == -1)
+            onStartButton = false;
+
+        if (onStartButton)
         {
-            //GameManager.StartButton();
+            startArrow.SetActive(true);
+            exitArrow.SetActive(false);
+        }
+        else
+        {
+            startArrow.SetActive(false);
+            exitArrow.SetActive(true);
+        }
+
+        if (Input.GetKeyDown("left ctrl"))
+        {
+            if (onStartButton)
+                GameManager.Instance.StartButton();
+            else GameManager.Instance.ExitGame();
         }
     }
+
 }
