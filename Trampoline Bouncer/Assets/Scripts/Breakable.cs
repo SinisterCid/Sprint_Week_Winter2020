@@ -13,7 +13,7 @@ public class Breakable : MonoBehaviour
     GameObject playerObj;
     Rigidbody2D playerRB;
     float velocityBeforePhysicsUpdate;
-    Animator anim;
+    public Animator anim;
 
     public AudioClip collisionClip;
     public AudioClip shatterClip;

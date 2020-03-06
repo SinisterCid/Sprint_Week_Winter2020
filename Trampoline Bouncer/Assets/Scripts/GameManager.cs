@@ -95,7 +95,8 @@ public class GameManager : SingletonBase<GameManager>
         {
             breakable.GetComponent<BoxCollider2D>().enabled = true;
             breakable.GetComponent<SpriteRenderer>().enabled = true;
-            breakable.GetComponent<Breakable>().health = 3;
+            breakable.GetComponent<Breakable>().health = 2;
+            breakable.GetComponent<Breakable>().anim.SetBool("WasHit", false);
         }
         foreach (GameObject coin in collectables)
         {
@@ -146,11 +147,6 @@ public class GameManager : SingletonBase<GameManager>
     public void StartButton()
     {
         SceneManager.LoadScene(1);
-    }
-
-    public void Options()
-    {
-
     }
 
     public void ExitGame()

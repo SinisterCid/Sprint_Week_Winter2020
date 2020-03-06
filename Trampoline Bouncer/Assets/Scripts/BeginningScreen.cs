@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BeginningScreen : MonoBehaviour
 {
@@ -36,8 +37,8 @@ public class BeginningScreen : MonoBehaviour
         if (Input.GetKeyDown("left ctrl"))
         {
             if (onStartButton)
-                GameManager.Instance.StartButton();
-            else GameManager.Instance.ExitGame();
+                SceneManager.LoadScene(1);
+            else Application.Quit();
         }
     }
 
