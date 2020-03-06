@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManager : SingletonBase<GameManager>
 {
-    public int maxLives;
-    public float waitTimeInSeconds;
+    public int maxLives = 3;
+    public float waitTimeInSeconds = 3;
 
     [Space]
     [Header("Don't touch past here")]
@@ -27,9 +27,9 @@ public class GameManager : MonoBehaviour
     AudioSource musicPlayer;
 
 
-    private void Awake()
+    public override void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        base.Awake();
         numberOfLives = maxLives;
         musicPlayer = GetComponent<AudioSource>();
 
